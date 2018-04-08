@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container" ng-app="clientsApp">
+    <div class="page-header">
+        <h1>Salary</h1>
+    </div>
+
+    <div ng-controller="ClientsCtrl">
+
+        <div class="form">
+            <form class="form-inline" name="form1">
+                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" ng-model="newemployee.firstName"
+                       placeholder="First name"
+                       required>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input type="text" class="form-control" ng-model="newemployee.lastName" placeholder="Last name"
+                           required>
+                </div>
+            </form>
+            <br/>
+            <form class="form-inline" name="form2">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" step="1" ng-model="newemployee.salaryPaid"
+                       placeholder="Annual Salary" required>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">%</div>
+                    <input type="number" class="form-control mb-2 mr-md-2 mb-sm-0" id="inlineFormInputGroup1" ng-model="newemployee.superPercent"
+                           placeholder="Super Rate" min="0" max="100" step=".01" required>
+                </div>
+
+            </form>
+            <br/>
+            <button type="button" data-target="#pay" data-toggle="modal"  ng-disabled="form1.$invalid || form2.$invalid" ng-click="calculateSalary()"
+                    class="btn btn-primary pull-right">Generate Payslip
+            </button>
+        </div>
+        <div class="modal" id="pay">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1>Payslip</h1>
+                    </div>
+                    <div>
+                        <h2>{{newemployee.firstName}} {{ newemployee.lastName}}</h2>
+                    </div>
+
+                    <form class="form-inline">
+                    <div class="margin-side">
+                    <label size="40" >Pay Date</label>
+                    </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.payDate"
+                               readonly>
+                    </form>
+
+                    <form class="form-inline">
+                        <div class="margin-side">
+                    <label>Pay Frequency</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.payFrequency"
+                               readonly>
+                    </form>
+
+                    <form class="form-inline">
+
+                        <div class="margin-side">
+
+                        <label>Annual Income</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0  margin-side" ng-model="newemployee.salaryPaid"
+                               readonly>
+                    </form>
+                    <form class="form-inline">
+
+                        <div class="margin-side">
+
+                        <label>Gross Income</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.grossIncome"
+                               readonly>
+                    </form>
+                    <form class="form-inline">
+                        <div class="margin-side">
+                            <label>Income Tax</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.incomeTax"
+                               readonly>
+                    </form>
+                    <form class="form-inline">
+                        <div class="margin-side">
+                            <label>Net Income</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.netIncome"
+                               readonly>
+                    </form>
+                    <form class="form-inline">
+                        <div class="margin-side">
+                            <label>Super</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.super"
+                               readonly>
+                    </form>
+                    <form class="form-inline">
+                        <div class="margin-side">
+                            <label>Pay</label>
+                        </div>
+                        <input type="text" size="25" class="form-control mb-2 mr-sm-2 mb-sm-0 margin-side" ng-model="newemployee.finalPay"
+                               readonly>
+                    </form>
+                    <br/>
+                    <button class="btn btn-primary pull-right"
+                            data-dismiss="modal"
+                            ng-click="paySalary()">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="js/index.js"></script>
+</body>
+</html>

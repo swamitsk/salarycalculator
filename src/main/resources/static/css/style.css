@@ -1,0 +1,41 @@
+body {
+  padding: 1rem 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+input:invalid {
+    border-color: red;
+}
+input,
+input:valid {
+    border-color: #ccc;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    width: 80px;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.modal {
+    margin: auto; }
+.margin-bottom {
+    margin-bottom:15px;
+}
+.margin-side {
+    margin-left:15px;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+label {
+    display: inline-block;
+    width:140px;
+    text-align:left;
+}
+
+
