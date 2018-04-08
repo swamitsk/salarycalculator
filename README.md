@@ -38,6 +38,8 @@ Net Income 4082
 Super 450
 Pay 3632
 
+The source is available in https://github.com/swamitsk/salarycalculator
+
 
 
 
